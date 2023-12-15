@@ -73,7 +73,7 @@ typedef struct lastdata
 } data_t;
 
 #define DATA_INIT \
-	data_t;
+	} data_t;
 
 #define DATA_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
@@ -163,7 +163,7 @@ void finf(data_t *, int);
 void free_list(data_t **);
 void perr(data_t *, char *);
 void freenode(file_t *, int);
-void sinf(data_t *, char **);
+void sinfo(data_t *, char **);
 void *_reall(void *, unsigned int, unsigned int);
 void che_cha(data_t *, char *, size_t *, size_t, size_t);
 

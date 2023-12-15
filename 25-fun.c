@@ -19,7 +19,7 @@ void clearer(data_t *x)
  * @v: vector
  */
 
-void sinf(data_t *x, char **v)
+void sinfo(data_t *x, char **v)
 {
 	int i = 0;
 
