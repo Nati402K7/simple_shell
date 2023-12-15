@@ -8,8 +8,8 @@
 
 int _lihis(data_t *x)
 {
-        prlist(x->htr);
-        return (0);
+	prlist(x->htr);
+	return (0);
 }
 
 /**
@@ -80,10 +80,8 @@ int rehis(data_t *x)
 
 	if (!fn)
 		return (0);
-
 	fd = open(fn, O_RDONLY);
 	free(fn);
-
 	if (fd == -1)
 		return (0);
 	if (!fstat(fd, &st))
@@ -98,7 +96,6 @@ int rehis(data_t *x)
 	if (r <= 0)
 		return (free(b), 0);
 	close(fd);
-
 	for (i = 0; i < fs; i++)
 		if (b[i] == '\n')
 		{
@@ -110,7 +107,6 @@ int rehis(data_t *x)
 		buhisl(x, b + j, l++);
 	free(b);
 	x->hiscou = l;
-
 	while (x->hiscou-- >= HIT_MAX)
 		delnode(&(x->htr), 0);
 	renhis(x);
@@ -136,23 +132,4 @@ int buhisl(data_t *x, char *b, int l)
 	if (!x->htr)
 		x->htr = ia;
 	return (0);
-}
-
-/**
- * renhis - A function that renumber history
- * @x: input argument
- * Return: number of history
- */
-
-int renhis(data_t *x)
-{
-	file_t *ia = x->htr;
-	int i = 0;
-
-	while (ia)
-	{
-		ia->num = i++;
-		ia = ia->next;
-	}
-	return (x->hiscou = i);
 }

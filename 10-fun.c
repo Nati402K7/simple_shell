@@ -7,13 +7,13 @@
 
 void fstr(char **s)
 {
-        char **i = s;
+	char **i = s;
 
-        if (!s)
-                return;
-        while (*s)
-                free(*s++);
-        free(i);
+	if (!s)
+		return;
+	while (*s)
+		free(*s++);
+	free(i);
 }
 
 /**
@@ -24,11 +24,11 @@ void fstr(char **s)
 
 int fadd(void **p)
 {
-        if (p && *p)
-        {
-                free(*p);
-                *p = NULL;
-                return (1);
-        }
-        return (0);
+	if (p && *p)
+	{
+		free(*p);
+		*p = NULL;
+		return (1);
+	}
+	return (0);
 }

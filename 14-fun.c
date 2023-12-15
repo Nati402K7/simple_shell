@@ -9,17 +9,17 @@
 
 char *_genv(data_t *x, const char *n)
 {
-        file_t *ia = x->env;
-        char *p;
+	file_t *ia = x->env;
+	char *p;
 
-        while (ia)
-        {
-                p = hashtack(ia->str, n);
-                if (p && *p)
-                        return (p);
-                ia = ia->next;
-        }
-        return (NULL);
+	while (ia)
+	{
+		p = hashtack(ia->str, n);
+		if (p && *p)
+			return (p);
+		ia = ia->next;
+	}
+	return (NULL);
 }
 
 /**
@@ -30,10 +30,10 @@ char *_genv(data_t *x, const char *n)
 
 char **genvi(data_t *x)
 {
-        if (!x->envp || x->envc)
-        {
-                x->envp = arrstrings(x->env);
-                x->envc = 0;
-        }
-        return (x->envp);
+	if (!x->envp || x->envc)
+	{
+		x->envp = arrstrings(x->env);
+		x->envc = 0;
+	}
+	return (x->envp);
 }

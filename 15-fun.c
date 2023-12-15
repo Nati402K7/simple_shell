@@ -8,14 +8,14 @@
 
 int _setenv(data_t *x)
 {
-        if (x->ac != 3)
-        {
-                _iputs("incorrect arguements of number\n");
-                return (1);
-        }
-        if (_senv(x, x->as[1], x->as[2]))
-                return (0);
-        return (1);
+	if (x->ac != 3)
+	{
+		_iputs("incorrect arguements of number\n");
+		return (1);
+	}
+	if (_senv(x, x->as[1], x->as[2]))
+		return (0);
+	return (1);
 }
 
 /**
@@ -26,15 +26,14 @@ int _setenv(data_t *x)
 
 int _rmenv(data_t *x)
 {
-        int i;
+	int i;
 
-        if (x->ac == 1)
-        {
-                _iputs(" arguements.\n");
-                return (1);
-        }
-        for (i = 1; i <= x->ac; i++)
-                _rmenvinf(x, x->as[i]);
-
-        return (0);
+	if (x->ac == 1)
+	{
+		_iputs(" arguements.\n");
+		return (1);
+	}
+	for (i = 1; i <= x->ac; i++)
+		_rmenvinf(x, x->as[i]);
+	return (0);
 }

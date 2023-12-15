@@ -10,11 +10,11 @@
 
 char *_memos(char *s, char b, unsigned int n)
 {
-        unsigned int i;
+	unsigned int i;
 
-        for (i = 0; i < n; i++)
-                s[i] = b;
-        return (s);
+	for (i = 0; i < n; i++)
+		s[i] = b;
+	return (s);
 }
 
 /**
@@ -25,7 +25,7 @@ char *_memos(char *s, char b, unsigned int n)
 
 int iact(data_t *x)
 {
-        return (isatty(STDIN_FILENO) && x->sfd <= 2);
+	return (isatty(STDIN_FILENO) && x->sfd <= 2);
 }
 
 /**
@@ -36,11 +36,11 @@ int iact(data_t *x)
 
 void perr(data_t *x, char *e)
 {
-        _iputs(x->pfn);
-        _iputs(": ");
-        print_d(x->ec, STDERR_FILENO);
-        _iputs(": ");
-        _iputs(x->as[0]);
-        _iputs(": ");
-        _iputs(e);
+	_iputs(x->pfn);
+	_iputs(": ");
+	print_d(x->ec, STDERR_FILENO);
+	_iputs(": ");
+	_iputs(x->as[0]);
+	_iputs(": ");
+	_iputs(e);
 }

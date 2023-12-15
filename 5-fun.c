@@ -7,12 +7,12 @@
 
 void rcomm(char *sa)
 {
-        int i;
+	int i;
 
-        for (i = 0; sa[i] != '\0'; i++)
-                if (sa[i] == '#' && (!i || sa[i - 1] == ' '))
-                {
-                        sa[i] = '\0';
-                        break;
-                }
+	for (i = 0; sa[i] != '\0'; i++)
+		if (sa[i] == '#' && (!i || sa[i - 1] == ' '))
+		{
+			sa[i] = '\0';
+			break;
+		}
 }

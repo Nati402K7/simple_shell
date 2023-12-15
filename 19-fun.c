@@ -10,28 +10,28 @@
 
 file_t *adnode(file_t **h, const char *s, int n)
 {
-        file_t *new_head;
+	file_t *new_head;
 
-        if (!h)
-                return (NULL);
-        new_head = malloc(sizeof(file_t));
+	if (!h)
+		return (NULL);
+	new_head = malloc(sizeof(file_t));
 
-        if (!new_head)
-                return (NULL);
-        _memos((void *)new_head, 0, sizeof(file_t));
-        new_head->n = n;
-        if (s)
-        {
-                new_head->s = _stdup(s);
-                if (!new_head->s)
-                {
-                        free(new_head);
-                        return (NULL);
-                }
-        }
-        new_head->next = *h;
-        *h = new_head;
-        return (new_head);
+	if (!new_head)
+		return (NULL);
+	_memos((void *)new_head, 0, sizeof(file_t));
+	new_head->n = n;
+	if (s)
+	{
+		new_head->s = _stdup(s);
+		if (!new_head->s)
+		{
+			free(new_head);
+			return (NULL);
+		}
+	}
+	new_head->next = *h;
+	*h = new_head;
+	return (new_head);
 }
 
 /**
@@ -44,36 +44,36 @@ file_t *adnode(file_t **h, const char *s, int n)
 
 file_t *addnode(file_t **h, const char *s, int n)
 {
-        file_t *new_node, *ia;
+	file_t *new_node, *ia;
 
-        if (!h)
-                return (NULL);
+	if (!h)
+		return (NULL);
 
-        ia = *h;
-        new_node = malloc(sizeof(file_t));
+	ia = *h;
+	new_node = malloc(sizeof(file_t));
 
-        if (!new_node)
-                return (NULL);
-        _memos((void *)new_node, 0, sizeof(file_t));
-        new_node->n = n;
-        if (s)
-        {
-                new_node->s = _stdup(s);
-                if (!new_node->s)
-                {
-                        free(new_node);
-                        return (NULL);
-                }
-        }
+	if (!new_node)
+		return (NULL);
+	_memos((void *)new_node, 0, sizeof(file_t));
+	new_node->n = n;
+	if (s)
+	{
+		new_node->s = _stdup(s);
+		if (!new_node->s)
+		{
+			free(new_node);
+			return (NULL);
+		}
+	}
 	if (ia)
-        {
-                while (ia->next)
-                        ia = ia->next;
-                ia->next = new_node;
-        }
-        else
-                *h = new_node;
-        return (new_node);
+	{
+		while (ia->next)
+			ia = ia->next;
+		ia->next = new_node;
+	}
+	else
+		*h = new_node;
+	return (new_node);
 }
 
 /**
@@ -85,35 +85,35 @@ file_t *addnode(file_t **h, const char *s, int n)
 
 int delnode(file_t **h, unsigned int in)
 {
-        file_t *ia, *prev_node;
-        unsigned int i = 0;
+	file_t *ia, *prev_node;
+	unsigned int i = 0;
 
-        if (!h || !*h)
-                return (0);
+	if (!h || !*h)
+		return (0);
 
-        if (!in)
-        {
-                ia = *h;
-                *h = (*h)->next;
-                free(ia->str);
-                free(ia);
-                return (1);
-        }
-        ia = *h;
-        while (ia)
-        {
-                if (i == in)
-                {
-                        prev_node->next = ia->next;
-                        free(ia->str);
-                        free(ia);
-                        return (1);
-                }
+	if (!in)
+	{
+		ia = *h;
+		*h = (*h)->next;
+		free(ia->str);
+		free(ia);
+		return (1);
+	}
+	ia = *h;
+	while (ia)
+	{
+		if (i == in)
+		{
+			prev_node->next = ia->next;
+			free(ia->str);
+			free(ia);
+			return (1);
+		}
 		i++;
-                prev_node = ia;
-                ia = ia->next;
-        }
-        return (0);
+		prev_node = ia;
+		ia = ia->next;
+	}
+	return (0);
 }
 
 /**
@@ -126,15 +126,15 @@ int delnode(file_t **h, unsigned int in)
 
 file_t *nodest(file_t *n, char *p, char c)
 {
-        char *i = NULL;
+	char *i = NULL;
 
-        while (n)
-        {
-                i = hashtack(n->str, prefix);
-                if (i && ((c == -1) || (*i == c)))
-                        return (n);
+	while (n)
+	{
+		i = hashtack(n->str, prefix);
+		if (i && ((c == -1) || (*i == c)))
+			return (n);
 
-                n = n->next;
-        }
-        return (NULL);
+		n = n->next;
+	}
+	return (NULL);
 }

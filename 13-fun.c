@@ -8,8 +8,8 @@
 
 int _env(data_t *x)
 {
-        prlisele(x->env);
-        return (0);
+	prlisele(x->env);
+	return (0);
 }
 
 /**
@@ -20,12 +20,12 @@ int _env(data_t *x)
 
 int poenvl(data_t *x)
 {
-        file_t *ia = NULL;
-        size_t i;
+	file_t *ia = NULL;
+	size_t i;
 
-        for (i = 0; envp[i]; i++)
-                addnode(&ia, envp[i], 0);
-        x->env = ia;
+	for (i = 0; envp[i]; i++)
+		addnode(&ia, envp[i], 0);
+	x->env = ia;
 
-        return (0);
+	return (0);
 }
