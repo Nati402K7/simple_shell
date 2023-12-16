@@ -69,7 +69,7 @@ int _senv(data_t *x, char *v, char *s)
 		}
 		ia = ia->next;
 	}
-	add_node_end(&(x->env), b, 0);
+	addnode(&(x->env), b, 0);
 	free(b);
 	x->envc = 1;
 	return (0);

@@ -75,7 +75,7 @@ int rehis(data_t *x)
 {
 	int i, j = 0, l = 0;
 	ssize_t fd, r, fs = 0;
-	struct s;
+	struct stat st;
 	char *b = NULL, *fn = gethis(x);
 
 	if (!fn)

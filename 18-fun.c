@@ -52,7 +52,7 @@ void che_cha(data_t *x, char *b, size_t *a, size_t f, size_t l)
 	{
 		if (x->sts)
 		{
-			b[i] = 0;
+			b[f] = 0;
 			j = l;
 		}
 	}
@@ -60,7 +60,7 @@ void che_cha(data_t *x, char *b, size_t *a, size_t f, size_t l)
 	{
 		if (!x->sts)
 		{
-			b[i] = 0;
+			b[f] = 0;
 			j = l;
 		}
 	}

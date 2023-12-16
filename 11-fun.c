@@ -17,11 +17,11 @@ ssize_t hoinp(data_t *x, char **b, size_t *v)
 	{
 		free(*b);
 		*b = NULL;
-		signal(SIGINT, siginHandler);
+		signal(SIGINT, handler);
 #if USE_GETLINE
 		i = getline(b, &j, stdin);
 #else
-		i = _getline(x, b, &j);
+		i = _gline(x, b, &j);
 #endif
 		if (i > 0)
 		{
@@ -50,24 +50,24 @@ ssize_t hoinp(data_t *x, char **b, size_t *v)
 
 ssize_t ginp(data_t *x)
 {
-	static char *b;
+	static char *scr;
 	static size_t i, j, l;
 	ssize_t r = 0;
-	char **k = &(x->a), *p;
+	char **scr_p = &(x->a), *p;
 
 	_putchar(SCR_FLUSH);
-	r = input_buf(x, &b, &l);
+	r = input_scr(x, &scr, &l);
 	if (r == -1)
 		return (-1);
 	if (l)
 	{
 		j = i;
-		p = b + i;
+		p = scr + i;
 
-		che_cha(x, b, &j, i, l);
+		che_cha(x, scr, &j, i, l);
 		while (j < l)
 		{
-			if (_cha(x, b, &j))
+			if (_cha(x, scr, &j))
 				break;
 			j++;
 		}
@@ -80,10 +80,10 @@ ssize_t ginp(data_t *x)
 			x->sscrt = SHELL_NORM;
 		}
 
-		*k = p;
+		*scr_p = p;
 		return (_stlen(p));
 	}
-	*k = b;
+	*scr_p = scr;
 	return (r);
 }
 
@@ -117,7 +117,7 @@ ssize_t rbuf(data_t *x, char *b, size_t *s)
 
 int _gline(data_t *x, char **p, size_t *l)
 {
-	static char b[SCAN_SCR_SIZE];
+	static char scr[SCAN_SCR_SIZE];
 	static size_t i, j;
 	size_t k;
 	ssize_t r = 0, s = 0;
@@ -129,21 +129,21 @@ int _gline(data_t *x, char **p, size_t *l)
 	if (i == j)
 		i = j = 0;
 
-	r = read_buf(x, b, &j);
+	r = scan_scr(x, scr, &j);
 	if (r == -1 || (r == 0 && j == 0))
 		return (-1);
 
-	c = _stchr(b + i, '\n');
-	k = c ? 1 + (unsigned int)(c - b) : j;
+	c = _stchr(scr + i, '\n');
+	k = c ? 1 + (unsigned int)(c - scr) : j;
 	n = _reall(q, s, s ? s + k : k + 1);
 
 	if (!n)
 		return (q ? free(q), -1 : -1);
 
 	if (s)
-		_stncat(n, b + i, k - i);
+		_stncat(n, scr + i, k - i);
 	else
-		_stncpy(n, b + i, k - i + 1);
+		_stncpy(n, scr + i, k - i + 1);
 
 	s += k - i;
 	i = k;

@@ -105,7 +105,7 @@ int rmalias(data_t *x, char *s)
 	char *p, c;
 	int i;
 
-	p = _strchar(s, '=');
+	p = _stchr(s, '=');
 	if (!p)
 		return (1);
 	c = *p;

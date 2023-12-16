@@ -130,7 +130,7 @@ file_t *nodest(file_t *n, char *p, char c)
 
 	while (n)
 	{
-		i = hashtack(n->str, prefix);
+		i = hashtack(n->str, p);
 		if (i && ((c == -1) || (*i == c)))
 			return (n);
 

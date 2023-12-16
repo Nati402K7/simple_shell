@@ -47,12 +47,12 @@ int _loop(data_t *x, char **ar)
 		clearer(x);
 		if (iact(x))
 			_puts("$ ");
-		_eputchar(SCREEN_FLUSH);
+		_iputchar(SCR_FLUSH);
 		i = ginp(x);
 		if (i != -1)
 		{
-			sinf(x, ar);
-			j = fbuiltin(x);
+			sinfo(x, ar);
+			j = f_builtin(x);
 			if (j == -1)
 				fcmd(x);
 		}
@@ -118,7 +118,7 @@ char *fpath(data_t *x, char *p, char *com)
 	{
 		if (!p[i] || p[i] == ':')
 		{
-			n = dipchar(p, curr_pos, i);
+			n = dipchar(p, j, i);
 			if (!*n)
 				_stcat(n, com);
 			else
@@ -126,11 +126,11 @@ char *fpath(data_t *x, char *p, char *com)
 				_stcat(n, "/");
 				_stcat(n, com);
 			}
-			if (_cmd(data, n))
+			if (_cmd(x, n))
 				return (n);
 			if (!p[i])
 				break;
-			curr_pos = i;
+			j = i;
 		}
 		i++;
 	}

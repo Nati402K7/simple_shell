@@ -29,7 +29,7 @@ void freenode(file_t **h)
 {
 	file_t *ia, *next_node, *head;
 
-	if (!h || !*hr)
+	if (!h || !*h)
 		return;
 	head = *h;
 	ia = head;
@@ -73,7 +73,7 @@ size_t lislen(const file_t *h)
 char **arrstrings(file_t *h)
 {
 	file_t *ia = h;
-	size_t i = list_len(h), j;
+	size_t i = lislen(h), j;
 	char **strs;
 	char *str;
 

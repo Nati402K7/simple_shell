@@ -18,7 +18,7 @@ int repalias(data_t *x)
 		if (!ia)
 			return (0);
 		free(x->as[0]);
-		p = _stchr(ia->str, '=');
+		p = _stchr(ia->sts, '=');
 		if (!p)
 			return (0);
 		p = _stdup(p + 1);

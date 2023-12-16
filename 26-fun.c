@@ -13,8 +13,8 @@ int pralias(data_t *ia)
 
 	if (ia)
 	{
-		p = _stchr(ia->str, '=');
-		for (a = ia->str; a <= p; a++)
+		p = _stchr(ia->sts, '=');
+		for (a = ia->sts; a <= p; a++)
 			_putchar(*a);
 		_putchar('\'');
 		_puts(p + 1);

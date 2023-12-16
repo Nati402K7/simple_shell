@@ -9,13 +9,13 @@
 
 int _cmd(data_t *x, char *pa)
 {
-	struct l m;
+	struct stat st;
 
 	(void)x;
-	if (!pa || l(pa, &m))
+	if (!pa || stat(pa, &st))
 		return (0);
 
-	if (m.st_mode & S_IFREG)
+	if (st.st_mode & S_IFREG)
 	{
 		return (1);
 	}

@@ -23,8 +23,8 @@ int poenvl(data_t *x)
 	file_t *ia = NULL;
 	size_t i;
 
-	for (i = 0; envp[i]; i++)
-		addnode(&ia, envp[i], 0);
+	for (i = 0; envelop[i]; i++)
+		addnode(&ia, envelop[i], 0);
 	x->env = ia;
 
 	return (0);

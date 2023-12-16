@@ -30,16 +30,16 @@ extern char **envelop;
 
 /**
  * struct filestr - singly linked list
- * @n: the number filed
- * @s: a string
- * @x: points to the next node
+ * @num: the number filed
+ * @str: a string
+ * @next: points to the next node
  */
 
 typedef struct filestr
 {
-	int n;
-	char *s;
-	struct filestr *x;
+	int num;
+	char *str;
+	struct filestr *next;
 } file_t;
 
 /**
@@ -72,8 +72,6 @@ typedef struct lastdata
 	file_t *env, *htr, *ali;
 } data_t;
 
-#define DATA_INIT \
-	} data_t;
 
 #define DATA_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
@@ -162,7 +160,7 @@ void clearer(data_t *);
 void finf(data_t *, int);
 void free_list(data_t **);
 void perr(data_t *, char *);
-void freenode(file_t *, int);
+void freenode(file_t **);
 void sinfo(data_t *, char **);
 void *_reall(void *, unsigned int, unsigned int);
 void che_cha(data_t *, char *, size_t *, size_t, size_t);

@@ -38,7 +38,7 @@ void perr(data_t *x, char *e)
 {
 	_iputs(x->pfn);
 	_iputs(": ");
-	print_d(x->ec, STDERR_FILENO);
+	decnum(x->ec, STDERR_FILENO);
 	_iputs(": ");
 	_iputs(x->as[0]);
 	_iputs(": ");
